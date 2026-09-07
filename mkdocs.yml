@@ -1,0 +1,19 @@
+site_name: "La Mirada Border Life"
+site_description: "Adelfa Park La Mirada Hub & Regional Real Estate Infrastructure Portal"
+site_url: "https://lamiradaborderlife.readthedocs.io/"
+
+theme:
+  name: material
+  palette:
+    primary: deep orange
+    accent: amber
+  features:
+    - navigation.instant
+
+# Raw HTML renders perfectly inside Markdown pages
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
