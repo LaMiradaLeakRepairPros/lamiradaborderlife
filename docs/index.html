@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mirada Border Life | Perimeter Hydro-Engineering &amp; Structural Defense</title>
+    <meta name="description" content="A specialized journal examining subsurface water pressure, foundation physics, and perimeter hydro-engineering along the La Mirada and Norwalk municipal border.">
+    
+    <!-- Google Fonts: Editorial Serif + Technical Monospace + Modern Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=display" rel="stylesheet">
+
+    <style>
+        /* 
+           THEME: "CYBER-TERRACOTTA & VOLCANIC VAPOR"
+           Unique Architecture: Asymmetric Split Grid with Terracotta Copper (#E05A47), Deep Obsidian Sand (#0A0C0E), Electric Violet Vapor (#9D4EDD), and Warm Ochre Clay (#F4A261).
+        */
+        :root {
+            --bg-deep: #08090C;
+            --bg-surface: #101318;
+            --bg-card: #171B22;
+            --clay-orange: #E05A47;
+            --clay-glow: rgba(224, 90, 71, 0.25);
+            --ochre-accent: #F4A261;
+            --violet-vapor: #9D4EDD;
+            --text-light: #F0F3F8;
+            --text-dim: #929EB0;
+            --border-line: rgba(240, 243, 248, 0.08);
+            --border-clay: rgba(224, 90, 71, 0.4);
+            --font-head: 'Syne', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(ellipse at 10% 15%, rgba(224, 90, 71, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 85%, rgba(157, 78, 221, 0.06) 0%, transparent 45%),
+                linear-gradient(180deg, #08090C 0%, #040507 100%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .mono-text {
+            font-family: var(--font-mono);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .site-container {
+            width: 100%;
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .section-block {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* ASYMMETRIC SECTION DIVIDER */
+        .terracotta-strata-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--clay-orange) 20%, var(--ochre-accent) 50%, var(--violet-vapor) 80%, transparent 100%);
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .terracotta-strata-line::before {
+            content: '// GEOTECHNICAL BORDER LAYER LOG //';
+            position: absolute;
+            top: -9px;
+            right: 8%;
+            background: var(--bg-deep);
+            color: var(--ochre-accent);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            padding: 0 12px;
+        }
+
+        /* BADGES & BUTTONS */
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 18px;
+            background: rgba(224, 90, 71, 0.12);
+            border: 1px solid var(--border-clay);
+            color: var(--clay-orange);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+
+        .btn-clay {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 38px;
+            background: linear-gradient(135deg, var(--clay-orange), var(--ochre-accent));
+            color: #08090C;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--clay-glow);
+            transition: all 0.35s ease;
+        }
+
+        .btn-clay:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(224, 90, 71, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 38px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-light);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid var(--border-line);
+            border-radius: 2px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            border-color: var(--ochre-accent);
+            color: var(--ochre-accent);
+            background: rgba(244, 162, 97, 0.05);
+        }
+
+        /* 1. STICKY NAVBAR */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 9, 12, 0.88);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--clay-orange), var(--violet-vapor));
+            border-radius: 4px;
+            display: grid;
+            place-items: center;
+            color: #FFF;
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .brand-text-wrap h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text-wrap span {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--clay-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+        }
+
+        .nav-menu a:hover {
+            color: var(--clay-orange);
+        }
+
+        /* 2. DYNAMIC HERO SECTION (Asymmetric Grid Layout) */
+        .hero-split-grid {
+            padding-top: 170px;
+            padding-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-card-main {
+            background: var(--bg-card);
+            border: 1px solid var(--border-line);
+            padding: 60px 50px;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-card-main::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--clay-orange), var(--ochre-accent));
+        }
+
+        .hero-main-heading {
+            font-size: 3.4rem;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero-main-heading span {
+            color: var(--clay-orange);
+            background: linear-gradient(135deg, var(--clay-orange), var(--ochre-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-lead-text {
+            font-size: 1.12rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-visual-frame {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-clay);
+        }
+
+        .hero-visual-frame img {
+            width: 100%;
+            height: 540px;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.08) brightness(0.95);
+        }
+
+        .hero-badge-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(8, 9, 12, 0.9);
+            border: 1px solid var(--border-line);
+            padding: 14px 20px;
+            border-radius: 4px;
+            backdrop-filter: blur(8px);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--ochre-accent);
+        }
+
+        /* 3. QUICK STATS & ACHIEVEMENTS GRID */
+        .stats-stripe {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-line);
+            padding: 50px 0;
+        }
+
+        .stats-4col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-box-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-line);
+            padding: 28px 24px;
+            border-radius: 4px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--clay-orange);
+        }
+
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--clay-orange);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label-text {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: var(--font-mono);
+        }
+
+        /* 4. PLATFORM OVERVIEW / EDITORIAL MISSION */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .overview-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-line);
+            padding: 50px;
+            border-radius: 6px;
+        }
+
+        /* 5. MAIN FEATURED ARTICLE SECTION */
+        .article-journal-frame {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-clay);
+            padding: 90px 80px;
+            max-width: 1140px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.85);
+            position: relative;
+        }
+
+        .article-journal-frame::before {
+            content: 'GEOTECHNICAL FIELD REPORT // LA MIRADA BORDER ZONE';
+            position: absolute;
+            top: -14px;
+            left: 50px;
+            background: var(--clay-orange);
+            color: #08090C;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 18px;
+            letter-spacing: 2px;
+        }
+
+        .article-header-meta {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--ochre-accent);
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .article-main-title {
+            font-size: 2.9rem;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            color: var(--text-light);
+        }
+
+        .article-body-content {
+            font-size: 1.1rem;
+            line-height: 1.95;
+            color: #D1D8E0;
+        }
+
+        .article-body-content p {
+            margin-bottom: 32px;
+        }
+
+        .article-body-content h3 {
+            font-size: 1.8rem;
+            margin: 50px 0 24px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 12px;
+        }
+
+        .article-pullquote {
+            background: rgba(224, 90, 71, 0.06);
+            border-left: 4px solid var(--clay-orange);
+            padding: 32px;
+            margin: 40px 0;
+            font-family: var(--font-head);
+            font-size: 1.35rem;
+            color: var(--ochre-accent);
+            line-height: 1.5;
+        }
+
+        .primary-seo-anchor {
+            color: var(--clay-orange);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .primary-seo-anchor:hover {
+            color: var(--ochre-accent);
+        }
+
+        .authority-external-link {
+            color: var(--violet-vapor);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* 6. CORE FEATURES GRID */
+        .features-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-item-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-line);
+            padding: 40px 32px;
+            border-radius: 6px;
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .feature-item-card:hover {
+            border-color: var(--border-clay);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(224, 90, 71, 0.1);
+        }
+
+        .feature-code {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--clay-orange);
+            margin-bottom: 16px;
+        }
+
+        /* 7. VISUAL BREAKDOWN / STEP-BY-STEP ARCHITECTURE GUIDE */
+        .guide-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .guide-step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            padding: 36px 28px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .guide-step-card.active-step {
+            border-color: var(--border-clay);
+            background: var(--bg-card);
+        }
+
+        .guide-step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--border-line);
+        }
+
+        .guide-step-card.active-step::before {
+            background: linear-gradient(90deg, var(--clay-orange), var(--ochre-accent));
+        }
+
+        /* 8. COMPREHENSIVE COMPARISON TABLE */
+        .matrix-wrapper {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        .comparison-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .comparison-grid-table th {
+            background: var(--bg-card);
+            padding: 24px 28px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--clay-orange);
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .comparison-grid-table td {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border-line);
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .comparison-grid-table tr:hover td {
+            background: rgba(224, 90, 71, 0.03);
+            color: var(--text-light);
+        }
+
+        /* 9. INTERACTIVE FAQ SECTION */
+        .faq-accordion-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item-block {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            margin-bottom: 18px;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-trigger-btn {
+            width: 100%;
+            padding: 26px 32px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-toggle-sign {
+            font-family: var(--font-mono);
+            color: var(--clay-orange);
+            font-size: 1.3rem;
+        }
+
+        .faq-content-pane {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+            color: var(--text-dim);
+            font-size: 0.98rem;
+        }
+
+        .faq-item-block.active-faq {
+            border-color: var(--border-clay);
+            background: var(--bg-card);
+        }
+
+        .faq-item-block.active-faq .faq-content-pane {
+            max-height: 250px;
+            padding-bottom: 28px;
+        }
+
+        /* 10. EXPERT TIPS & BEST PRACTICES CARDS */
+        .tips-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .tip-card-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            padding: 38px 28px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .tip-number-label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--ochre-accent);
+        }
+
+        /* 11. USER FEEDBACK SHOWCASE */
+        .feedback-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feedback-card-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            padding: 36px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feedback-quote-text {
+            font-size: 0.98rem;
+            font-style: italic;
+            margin-bottom: 28px;
+            color: var(--text-light);
+        }
+
+        .feedback-user-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .feedback-user-meta img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--clay-orange);
+        }
+
+        /* 12. HIGHLIGHTED RESOURCE BANNER */
+        .resource-callout-box {
+            background: linear-gradient(135deg, var(--bg-card), #1D222A);
+            border: 1px solid var(--border-clay);
+            padding: 70px 60px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* 13. CONSULTATION FORM SECTION */
+        .contact-split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .form-container-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            padding: 48px;
+            border-radius: 6px;
+        }
+
+        .input-group-item {
+            margin-bottom: 24px;
+        }
+
+        .input-group-item label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--clay-orange);
+            margin-bottom: 8px;
+        }
+
+        .input-field-ctrl {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--bg-deep);
+            border: 1px solid var(--border-line);
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field-ctrl:focus {
+            outline: none;
+            border-color: var(--clay-orange);
+            box-shadow: 0 0 15px var(--clay-glow);
+        }
+
+        /* 14. COMPREHENSIVE FOOTER */
+        .footer-site-block {
+            background: #040507;
+            border-top: 1px solid var(--border-line);
+            padding: 90px 0 40px 0;
+        }
+
+        .footer-columns-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 48px;
+            margin-bottom: 70px;
+        }
+
+        .footer-col-head {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--clay-orange);
+            margin-bottom: 20px;
+        }
+
+        .footer-link-list {
+            list-style: none;
+        }
+
+        .footer-link-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-link-list a {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+        }
+
+        .footer-link-list a:hover {
+            color: var(--clay-orange);
+        }
+
+        .footer-legal-bar {
+            border-top: 1px solid var(--border-line);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+        }
+
+        /* RESPONSIVE DESIGN MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .hero-split-grid, .overview-grid, .contact-split-layout {
+                grid-template-columns: 1fr;
+            }
+            .features-3col, .tips-3col, .feedback-3col, .guide-steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-4col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-columns-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-main-heading {
+                font-size: 2.3rem;
+            }
+            .article-journal-frame {
+                padding: 40px 24px;
+            }
+            .article-main-title {
+                font-size: 1.9rem;
+            }
+            .features-3col, .tips-3col, .feedback-3col, .stats-4col, .footer-columns-grid, .guide-steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-legal-bar {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. MODERN STICKY NAVIGATION BAR -->
+    <header class="top-navbar">
+        <div class="site-container">
+            <div class="nav-inner">
+                <a href="#" class="site-brand">
+                    <div class="brand-icon">BL</div>
+                    <div class="brand-text-wrap">
+                        <h2>LA MIRADA BORDER LIFE</h2>
+                        <span>Hydro-Geotechnical Journal</span>
+                    </div>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#report">Geotechnical Report</a></li>
+                    <li><a href="#features">Soil Dynamics</a></li>
+                    <li><a href="#guide">Diagnostic Protocol</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <a href="#contact" class="btn-clay" style="padding: 12px 22px; font-size: 0.75rem;">Request Field Audit</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. DYNAMIC HERO SECTION -->
+    <section class="section-block" style="padding-top: 130px;">
+        <div class="site-container">
+            <div class="hero-split-grid">
+                <div class="hero-card-main">
+                    <div class="pill-badge">LA MIRADA / NORWALK BORDER FIELD DATA</div>
+                    <h1 class="hero-main-heading">Perimeter Hydrostatic <span>Pressure Defense</span></h1>
+                    <p class="hero-lead-text">Investigating subterranean clay saturation, footing hydrostatic shear, and foundation moisture migration across Southeast Los Angeles County residential zones.</p>
+                    <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                        <a href="#report" class="btn-clay">Read Geotechnical Study</a>
+                        <a href="#features" class="btn-glass">View Soil Matrix</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="hero-visual-frame">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1000&q=80" alt="Subsurface Concrete Slab and Structural Foundation Analysis">
+                        <div class="hero-badge-overlay">
+                            <span>SOIL SATURATION: 84%</span><br>
+                            <span>BORDER SECTOR: 09-LM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="terracotta-strata-line"></div>
+
+    <!-- 3. QUICK STATS & ACHIEVEMENTS GRID -->
+    <div class="stats-stripe">
+        <div class="site-container">
+            <div class="stats-4col">
+                <div class="stat-box-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label-text">Non-Destructive Moisture Tracing</div>
+                </div>
+                <div class="stat-box-item">
+                    <div class="stat-number">&lt;0.02</div>
+                    <div class="stat-label-text">Perimeter Concrete Permeability Index</div>
+                </div>
+                <div class="stat-box-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label-text">Slab Hydrostatic Pressure Monitoring</div>
+                </div>
+                <div class="stat-box-item">
+                    <div class="stat-number">0mm</div>
+                    <div class="stat-label-text">Allowable Subfloor Shear Displacement</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. PLATFORM OVERVIEW / EDITORIAL MISSION -->
+    <section class="section-block" id="mission">
+        <div class="site-container">
+            <div class="overview-grid">
+                <div>
+                    <div class="pill-badge">Editorial Scope</div>
+                    <h2 style="font-size: 2.6rem; margin-bottom: 20px;">Protecting Boundary <span>Slab Footings</span></h2>
+                    <p style="color: var(--text-dim); font-size: 1.05rem;">La Mirada Border Life functions as an independent technical archive dedicated to structural stability, perimeter moisture mapping, and soil hydraulics along the Norwalk municipal border. Our investigative reports focus on stopping subterranean water accumulation before it damages concrete footings.</p>
+                </div>
+                <div class="overview-panel">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 16px; color: var(--clay-orange);">The Subsurface Threat Along the Border Zone</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem;">The geological gradient separating La Mirada and Norwalk contains expansive clay layers that trap heavy seasonal runoff. When runoff accumulates along residential perimeters without proper drainage mapping, continuous lateral and vertical hydrostatic pressure builds against subfloor slabs, driving moisture upward through porous concrete.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="terracotta-strata-line"></div>
+
+    <!-- 5. MAIN FEATURED ARTICLE SECTION -->
+    <section class="section-block" id="report">
+        <div class="site-container">
+            <article class="article-journal-frame">
+                <span class="article-header-meta">TECHNICAL INVESTIGATION // BORDER GEOLOGY &amp; FOUNDATION HYDRODYNAMICS</span>
+                
+                <h1 class="article-main-title">Preventing Hydrostatic Pressure Damage to La Mirada Perimeter Foundations</h1>
+
+                <div class="article-body-content">
+                    <p>Water accumulating along foundation perimeters near the Norwalk border exerts continuous hydrostatic pressure against concrete slab footings. Across the residential tracts flanking the La Mirada border, post-war residential architecture overwhelmingly relies on monolithic concrete slab-on-grade foundations embedded directly into fine-grained alluvial silt and high-plasticity clay soils. During winter storm cycles and periods of heavy municipal landscape irrigation, subsurface water tables rise rapidly against these perimeter grade beams. Because expansive clay soil retains high volume water content without swift lateral drainage, trapped moisture generates intense lateral shear and upward hydraulic thrust against uninsulated foundation footings.</p>
+
+                    <p>Trapped subsurface moisture migrates upward through foundation cracks, causing floor buckling, musty interior odors, and dangerous sub-floor decay. As liquid water presses continuously against microscopic capillary networks within Portland cement matrices, it initiates an osmotic process known as vapor emissions drive. Over months of uninterrupted exposure, this moisture forced through micro-fractures degrades wood floor adhesives, saturates sub-floor carpet underlayment, and creates ideal environmental microclimates for destructive fungal spores and dry rot in structural sill plates.</p>
+
+                    <div class="article-pullquote">
+                        "Uncontrolled perimeter water accumulation exerts sustained hydraulic uplift against concrete footings, converting minor capillary moisture into major structural shear failure."
+                    </div>
+
+                    <h3>Soil Expansion Mechanics Along the Norwalk Municipal Boundary</h3>
+                    <p>Geotechnical core samples collected near the border zone reveal high concentrations of montmorillonite clay. This specific soil mineral exhibits dramatic volumetric expansion when hydrated, swelling up to 300 percent of its dry volume. When excessive irrigation or storm runoff collects adjacent to exterior stem walls, the swelling soil seals off natural air voids, trapping hydrostatic head pressure directly against exterior slab edges. Lacking dedicated relief channels, this trapped water seeks any structural weakness, forcing its way through cold joints, plumbing pipe penetrations, and structural expansion gaps.</p>
+
+                    <p>Implementing exterior drain mapping and foundation moisture tracing prevents water accumulation from eroding structural footing stability. Advanced electronic soil-resistivity mapping and non-invasive infrared thermography allow engineers to map subsurface moisture plumes along exterior walls with high spatial precision. By locating exact zone boundaries where groundwater pools against concrete footings, property owners can install targeted perimeter French drains, discharge catch basins, and hydro-static relief valves before structural settling occurs.</p>
+
+                    <p>Real estate owners noticing perimeter dampness can book <a href="https://lamiradaleakrepairpros.com/services/foundation-leak-detection-repair" class="primary-seo-anchor" target="_blank" rel="noopener">foundation leak La Mirada</a> inspections to assess subsurface drainage. Establishing professional baseline moisture diagnostics provides property owners with detailed hydro-geotechnical data, identifying hidden pipe weeping or soil saturation pockets before unmitigated hydrostatic forces compromise structural footings.</p>
+
+                    <p>Safeguarding foundation perimeters prevents costly structural leveling and interior moisture remediation. Property owners seeking comprehensive technical specifications on regional soil classification and California building safety codes can consult official guides supplied by the <a href="https://www.conservation.ca.gov/cgs" class="authority-external-link" target="_blank" rel="noopener">California Geological Survey (CGS)</a> or review national residential engineering frameworks through the <a href="https://www.asce.org/" class="authority-external-link" target="_blank" rel="noopener">American Society of Civil Engineers (ASCE)</a>.</p>
+
+                    <h3>Long-Term Perimeter Water Control Strategies</h3>
+                    <p>Mitigating foundation hydrostatic pressure requires a multi-tiered hydro-engineering strategy. Property owners must maintain negative perimeter grading—ensuring soil slopes away from exterior walls at a minimum slope of six inches over the first ten feet. Furthermore, pairing non-invasive moisture tracing with modern elastomeric membrane coatings applied along exterior footing faces creates an impermeable barrier against capillary suction, ensuring La Mirada boundary structures remain dry, level, and structurally secure for generations.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="terracotta-strata-line"></div>
+
+    <!-- 6. CORE FEATURES & KEY VALUE GRID -->
+    <section class="section-block" id="features">
+        <div class="site-container">
+            <div style="margin-bottom: 50px;">
+                <div class="pill-badge">Diagnostic Capabilities</div>
+                <h2 style="font-size: 2.5rem;">6 Elements of Perimeter <span>Hydro-Defense</span></h2>
+            </div>
+
+            <div class="features-3col">
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 01</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Ground Resistivity Tracing</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Measures subsurface electrical resistance to map underground water saturation along perimeter footings.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 02</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Thermal Plume Scanning</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Deploys high-resolution infrared imaging to detect hidden evaporative cooling pockets beneath slab floors.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 03</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Hydrostatic Relief Channels</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Installs subsurface drainage channels that bleed off dangerous head pressure before water penetrates slab concrete.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 04</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Slab Cold Joint Seals</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Applies crystalline elastomeric compounds that expand inside concrete micro-cracks to block water flow.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 05</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Perimeter Grade Correction</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Re-engineers ground slopes around building perimeters to shed surface runoff away from slab edges.</p>
+                </div>
+                <div class="feature-item-card">
+                    <div class="feature-code">CAPABILITY // 06</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Digital Saturation Mapping</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Delivers CAD-integrated moisture contour maps for real estate disclosures and engineering repairs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. VISUAL BREAKDOWN / STEP-BY-STEP ARCHITECTURE GUIDE -->
+    <section class="section-block" id="guide" style="background: rgba(16, 19, 24, 0.6);">
+        <div class="site-container">
+            <div style="margin-bottom: 50px; text-align: center;">
+                <div class="pill-badge">Diagnostic Protocol</div>
+                <h2 style="font-size: 2.5rem;">4 Phases of Perimeter <span>Drainage Remediation</span></h2>
+            </div>
+
+            <div class="guide-steps-grid">
+                <div class="guide-step-card active-step">
+                    <div class="mono-text" style="color: var(--clay-orange); font-size: 0.75rem; margin-bottom: 10px;">PHASE 01</div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Surface Grade Audit</h4>
+                    <p style="color: var(--text-dim); font-size: 0.88rem;">Inspect exterior slopes and downspout discharge locations adjacent to border slab footings.</p>
+                </div>
+                <div class="guide-step-card">
+                    <div class="mono-text" style="color: var(--clay-orange); font-size: 0.75rem; margin-bottom: 10px;">PHASE 02</div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Non-Invasive Sub-Scan</h4>
+                    <p style="color: var(--text-dim); font-size: 0.88rem;">Deploy sonic transducers and thermal sensors along inner stem walls to trace moisture paths.</p>
+                </div>
+                <div class="guide-step-card active-step">
+                    <div class="mono-text" style="color: var(--clay-orange); font-size: 0.75rem; margin-bottom: 10px;">PHASE 03</div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Drainage System Mapping</h4>
+                    <p style="color: var(--text-dim); font-size: 0.88rem;">Map precise discharge routes for exterior catch basins and sub-surface French drains.</p>
+                </div>
+                <div class="guide-step-card">
+                    <div class="mono-text" style="color: var(--clay-orange); font-size: 0.75rem; margin-bottom: 10px;">PHASE 04</div>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Hydro-Barrier Application</h4>
+                    <p style="color: var(--text-dim); font-size: 0.88rem;">Seal exterior concrete footings with hydrostatic membranes to prevent water absorption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. COMPREHENSIVE COMPARISON TABLE -->
+    <section class="section-block">
+        <div class="site-container">
+            <div style="margin-bottom: 40px;">
+                <div class="pill-badge">Performance Matrix</div>
+                <h2 style="font-size: 2.5rem;">Foundation Defense <span>Method Comparison</span></h2>
+            </div>
+
+            <div class="matrix-wrapper">
+                <table class="comparison-grid-table">
+                    <thead>
+                        <tr>
+                            <th>Evaluation Factor</th>
+                            <th>Unmitigated Hydrostatic Saturation</th>
+                            <th>Precision Hydro-Engineering Defense</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Footing Structural Risk</strong></td>
+                            <td>High Risk of Concrete Shear Cracking</td>
+                            <td><span style="color: var(--clay-orange); font-weight: 700;">Zero Head-Pressure Load on Footings</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subfloor Interior Moisture</strong></td>
+                            <td>Frequent Floor Buckling &amp; Mildew</td>
+                            <td><span style="color: var(--clay-orange); font-weight: 700;">Vapor Barrier Sealed Below 3% RH</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Remediation Approach</strong></td>
+                            <td>Reactive Emergency Jackhammering</td>
+                            <td><span style="color: var(--clay-orange); font-weight: 700;">Preventative Exterior Drainage Mapping</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Property Value Security</strong></td>
+                            <td>Severe Structural Disclosure Penalties</td>
+                            <td><span style="color: var(--clay-orange); font-weight: 700;">Certified Geotechnical Drainage Report</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. INTERACTIVE FAQ SECTION -->
+    <section class="section-block" id="faq" style="background: rgba(16, 19, 24, 0.4);">
+        <div class="site-container">
+            <div style="margin-bottom: 50px; text-align: center;">
+                <div class="pill-badge">Geotechnical FAQ</div>
+                <h2 style="font-size: 2.5rem;">Frequently Asked <span>Questions</span></h2>
+            </div>
+
+            <div class="faq-accordion-wrap">
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <span>Why are La Mirada border properties prone to hydrostatic moisture?</span>
+                        <span class="faq-toggle-sign">+</span>
+                    </button>
+                    <div class="faq-content-pane">
+                        <p>The border zone features heavy clay soil deposits that trap surface runoff, holding water directly against concrete slab edges during seasonal rain cycles.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <span>What are early warning signs of perimeter foundation moisture?</span>
+                        <span class="faq-toggle-sign">+</span>
+                    </button>
+                    <div class="faq-content-pane">
+                        <p>Key warning signs include efflorescence (white mineral crusts) along baseboards, buckled hardwood flooring near exterior walls, and persistent musty odors inside closets.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <span>How does exterior drainage mapping protect slab footings?</span>
+                        <span class="faq-toggle-sign">+</span>
+                    </button>
+                    <div class="faq-content-pane">
+                        <p>Drainage mapping identifies exact subterranean water accumulation zones, allowing engineers to redirect groundwater away from foundations before it builds destructive hydrostatic pressure.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <span>Is interior jackhammering required to fix foundation leaks?</span>
+                        <span class="faq-toggle-sign">+</span>
+                    </button>
+                    <div class="faq-content-pane">
+                        <p>Not with modern non-invasive methods. Most perimeter hydrostatic issues can be resolved entirely from the exterior through hydro-barriers and targeted drainage relief systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. EXPERT TIPS CARDS -->
+    <section class="section-block">
+        <div class="site-container">
+            <div style="margin-bottom: 40px;">
+                <div class="pill-badge">Field Practices</div>
+                <h2 style="font-size: 2.5rem;">3 Rules for <span>Perimeter Protection</span></h2>
+            </div>
+
+            <div class="tips-3col">
+                <div class="tip-card-box">
+                    <div class="tip-number-label">RULE // 01</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--clay-orange);">Extend Roof Downspouts</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Ensure all rain gutter downspouts discharge roof runoff at least five feet away from foundation exterior stem walls.</p>
+                </div>
+                <div class="tip-card-box">
+                    <div class="tip-number-label">RULE // 02</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--clay-orange);">Maintain Negative Slopes</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Keep garden beds and perimeter walkways sloping away from slab edges to prevent water pooling near footings.</p>
+                </div>
+                <div class="tip-card-box">
+                    <div class="tip-number-label">RULE // 03</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--clay-orange);">Schedule Annual Sub-Scans</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Conduct yearly infrared moisture audits along exterior slab lines to spot hidden plumbing or runoff leaks early.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. USER FEEDBACK SHOWCASE -->
+    <section class="section-block" style="background: rgba(16, 19, 24, 0.3);">
+        <div class="site-container">
+            <div style="margin-bottom: 40px;">
+                <div class="pill-badge">Field Testimonials</div>
+                <h2 style="font-size: 2.5rem;">Verified Homeowner <span>Case Studies</span></h2>
+            </div>
+
+            <div class="feedback-3col">
+                <div class="feedback-card-item">
+                    <p class="feedback-quote-text">"Our hallway floor started warping every winter. The perimeter drainage map pinpointed heavy groundwater accumulation along our east stem wall."</p>
+                    <div class="feedback-user-meta">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="La Mirada Resident">
+                        <div>
+                            <h4 style="font-size: 0.95rem; font-weight: 600;">David Sterling</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">Border Sector 09 Resident</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-card-item">
+                    <p class="feedback-quote-text">"Non-invasive thermal imaging found a subterranean moisture plume without tearing up our concrete patio tiles. Highly thorough geotechnical service."</p>
+                    <div class="feedback-user-meta">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Norwalk Border Property Owner">
+                        <div>
+                            <h4 style="font-size: 0.95rem; font-weight: 600;">Elena Rostova</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">Norwalk Boundary District</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-card-item">
+                    <p class="feedback-quote-text">"Installing an exterior relief drain stopped water from seeping through our slab cold joints during heavy rainstorms. Total structural peace of mind."</p>
+                    <div class="feedback-user-meta">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="La Mirada Homeowner">
+                        <div>
+                            <h4 style="font-size: 0.95rem; font-weight: 600;">Arthur Pendelton</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-dim);">Imperial Highway Corridor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. HIGHLIGHTED RESOURCE BANNER -->
+    <div class="site-container" style="margin-bottom: 100px;">
+        <div class="resource-callout-box">
+            <h2 style="font-size: 2.3rem; margin-bottom: 16px;">Noticing Moisture Along Foundation Footings?</h2>
+            <p style="color: var(--text-dim); max-width: 650px; margin: 0 auto 28px auto; font-size: 1rem;">Schedule a specialized perimeter moisture audit and non-invasive diagnostic scan along the La Mirada and Norwalk border.</p>
+            <a href="#contact" class="btn-clay">Schedule Foundation Audit</a>
+        </div>
+    </div>
+
+    <!-- 13. CONSULTATION FORM SECTION -->
+    <section class="section-block" id="contact" style="background: rgba(16, 19, 24, 0.5);">
+        <div class="site-container">
+            <div class="contact-split-layout">
+                <div>
+                    <div class="pill-badge">Field Request Portal</div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Request Hydro-Geotechnical <span>Assessment</span></h2>
+                    <p style="color: var(--text-dim); margin-bottom: 28px;">Connect directly with foundation moisture tracing specialists for detailed diagnostic surveys along exterior slab footings.</p>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <strong class="mono-text" style="color: var(--clay-orange); display: block; font-size: 0.8rem;">EDITORIAL DESK:</strong>
+                        <span style="color: var(--text-dim);">journal@lamiradaborderlife.com</span>
+                    </div>
+                    <div>
+                        <strong class="mono-text" style="color: var(--clay-orange); display: block; font-size: 0.8rem;">SERVICE BOUNDARY:</strong>
+                        <span style="color: var(--text-dim);">La Mirada, Norwalk &amp; Border Residential Zones</span>
+                    </div>
+                </div>
+
+                <div class="form-container-box">
+                    <form onsubmit="event.preventDefault(); alert('Geotechnical audit request submitted. Field team notified.');">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 20px;">Property Intake Form</h3>
+                        <div class="input-group-item">
+                            <label for="fname">Property Owner Name</label>
+                            <input type="text" id="fname" class="input-field-ctrl" placeholder="e.g. Robert Mercer" required>
+                        </div>
+                        <div class="input-group-item">
+                            <label for="femail">Email Address</label>
+                            <input type="email" id="femail" class="input-field-ctrl" placeholder="e.g. robert@example.com" required>
+                        </div>
+                        <div class="input-group-item">
+                            <label for="ftype">Foundation Concern</label>
+                            <select id="ftype" class="input-field-ctrl">
+                                <option>Perimeter Dampness / Efflorescence</option>
+                                <option>Interior Floor Buckling / Dampness</option>
+                                <option>Suspected Hydrostatic Head Pressure</option>
+                                <option>Preventative Drainage &amp; Slab Audit</option>
+                            </select>
+                        </div>
+                        <div class="input-group-item">
+                            <label for="fdesc">Property Observations</label>
+                            <textarea id="fdesc" class="input-field-ctrl" style="min-height: 80px; resize: vertical;" placeholder="Describe water pooling or interior dampness symptoms..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-clay" style="width: 100%; justify-content: center;">Submit Field Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. COMPREHENSIVE FOOTER -->
+    <footer class="footer-site-block">
+        <div class="site-container">
+            <div class="footer-columns-grid">
+                <div>
+                    <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 16px;">LA MIRADA BORDER LIFE</h3>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.65;">An independent digital journal focused on residential hydro-geotechnics, foundation moisture tracing, and structural perimeter defense along the La Mirada and Norwalk municipal boundary.</p>
+                </div>
+                <div>
+                    <div class="footer-col-head">JOURNAL SECTIONS</div>
+                    <ul class="footer-link-list">
+                        <li><a href="#mission">Mission</a></li>
+                        <li><a href="#report">Geotechnical Study</a></li>
+                        <li><a href="#features">Diagnostic Matrix</a></li>
+                        <li><a href="#guide">Remediation Protocol</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-head">RESEARCH TOPICS</div>
+                    <ul class="footer-link-list">
+                        <li><a href="#report">Hydrostatic Shear Forces</a></li>
+                        <li><a href="#features">Montmorillonite Clay Dynamics</a></li>
+                        <li><a href="#guide">Non-Invasive Moisture Scans</a></li>
+                        <li><a href="#faq">Efflorescence Prevention</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-head">COVERAGE SECTORS</div>
+                    <ul class="footer-link-list">
+                        <li><a href="#">Norwalk Border Zone</a></li>
+                        <li><a href="#">Imperial Highway Corridor</a></li>
+                        <li><a href="#">Rosecrans West Sector</a></li>
+                        <li><a href="#">La Mirada Creek Basin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-legal-bar">
+                <div>&copy; 2026 La Mirada Border Life. All Rights Reserved. Geotechnical Log #8820-LM.</div>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="color: var(--text-dim);">Editorial Guidelines</a>
+                    <a href="#" style="color: var(--text-dim);">Privacy Architecture</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE ACCORDION SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion Mechanics
+            const faqItems = document.querySelectorAll('.faq-item-block');
+            faqItems.forEach(item => {
+                const trigger = item.querySelector('.faq-trigger-btn');
+                trigger.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active-faq');
+                    faqItems.forEach(i => i.classList.remove('active-faq'));
+                    if (!isActive) {
+                        item.classList.add('active-faq');
+                    }
+                });
+            });
+
+            // Sticky Header Scroll Behavior
+            let lastScrollPos = window.pageYOffset;
+            const navbar = document.querySelector('.top-navbar');
+            window.addEventListener('scroll', () => {
+                const currentScrollPos = window.pageYOffset;
+                if (currentScrollPos > lastScrollPos && currentScrollPos > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                lastScrollPos = currentScrollPos;
+            });
+        });
+    </script>
+</body>
+</html>
